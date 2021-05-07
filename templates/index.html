@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+
+<div class="container mt-5">
+    <h1>Formulario de contactos</h1>
+    <div class="row">
+        <div class="col-md-6">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+           <div class="card card-body">
+            <form action="/add_contact" method="POST">
+                <div class="form-group">
+                    <label for="fullname">Nombre completo</label>
+                    <input type="text" name="fullname" id="fullname" class="form-control" placeholder="Escribe el nombre">
+                </div>
+                <div class="form-group my-3">
+                    <label for="phone">Telefono</label>
+                    <input type="text" name="phone" id="phone" class="form-control" placeholder="Escribe el celular">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Escribe el email"> 
+                </div>
+                <button type="submit" class="btn btn-success mt-3">Agregar</button>
+            </form>
+           </div>
+        </div>
+
+        <div class="col-md-6">
+           <div class="card card-body">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">nombre completo</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">email</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for item in contacts %}
+                        <tr>
+                            <td>{{ item.0 }}</td>
+                            <td>{{ item.1 }}</td>
+                            <td>{{ item.2 }}</td>
+                            <td>{{ item.3 }}</td>
+                            <td>
+                                <a href="/edit/{{ item.0 }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                <a href="/delete/{{ item.0 }}" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+           </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

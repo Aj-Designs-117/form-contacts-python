@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="container mt-5">
+    <h1>Formulario para editar</h1>
+    <div class="card card-body">
+        <form action="/update/{{ contact.0 }}" method="POST">
+            <div class="form-group">
+                 <label for="fullname">Nombre completo</label>
+                 <input type="text" name="fullname" id="fullname" class="form-control" placeholder="Escribe el nombre" value="{{ contact.1 }}">
+             </div>
+             <div class="form-group my-3">
+                 <label for="phone">Telefono</label>
+                 <input type="text" name="phone" id="phone" class="form-control" placeholder="Escribe el celular" value="{{ contact.2 }}">
+             </div>
+             <div class="form-group">
+                 <label for="email">Email</label>
+                 <input type="email" name="email" id="email" class="form-control" placeholder="Escribe el email" value="{{ contact.3 }}"> 
+             </div>
+             <button type="submit" class="btn btn-success mt-3">Guardar</button>
+         </form>
+    </div>
+</div>
+
+{% endblock %}
+
