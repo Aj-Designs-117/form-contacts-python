@@ -1,4 +1,4 @@
-<img src="static/img/presentation.png" width="700">
+<img src="static/img/main.png" width="700">
 
 ## Datos del diseñador
 
