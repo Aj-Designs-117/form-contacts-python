@@ -4,4 +4,3 @@
 
 - Tema: Formulario de contactos con python
 - Desarrollado por Aj&Designs
-- Ing. Mecatronico y diseñador Web
